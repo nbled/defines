@@ -7,7 +7,7 @@ class API {
 
 	load() {
 		let xhttp = new XMLHttpRequest();
-		xhttp.open("GET", "http://localhost:8000/" + this.database, false);
+		xhttp.open("GET", this.database, false);
 		xhttp.send(null);
 
 		if (xhttp.status == 200) {
