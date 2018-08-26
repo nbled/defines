@@ -55,7 +55,7 @@
 				}
 			}
 
-			let api = new API("database/constants.json");
+			let api = new API(window.location.href + "database/constants.json");
 			api.load();
 
 			refresh(api.constants);
