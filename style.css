@@ -22,3 +22,11 @@ input {
     background: transparent;
     border-bottom: 1px solid black;
 }
+
+a {
+    color: black;
+}
+
+a:visited {
+    color: #8d8b8a;
+}
