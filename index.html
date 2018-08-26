@@ -30,6 +30,13 @@
 				<option>125</option>
 				<option>150</option>
 			</select>
+			<label> Format: </label>
+			<select id="format">
+				<option>Decimal</option>
+				<option>Hexadecimal</option>
+				<option>Binary</option>
+				<option>Octal</option>
+			</select>
 		</div>
 		<br/>
 
@@ -61,7 +68,17 @@
 					let r_cell = row.insertCell(2);
 				
 					n_cell.innerHTML = key;
-					v_cell.innerHTML = "0x" + data[key].value.toString(16);
+				
+					let format = $("#format").val();
+					
+					let base = 10;
+					let prefix = "";
+					if (format == "Decimal") { base = 10; prefix = ""; }
+					else if (format == "Hexadecimal") { base = 16; prefix = "0x"; }
+					else if (format == "Binary") { base = 2; prefix = "0b"; }
+					else if (format == "Octal") { base = 8; prefix = "0"; }
+
+					v_cell.innerHTML = prefix + data[key].value.toString(base);
 					r_cell.innerHTML = "<a href=\"https://elixir.bootlin.com/linux/v4.15/source/include/linux/" + data[key].reference.file + "#L" + data[key].reference.line + "\">" + data[key].reference.file + "</a>";
 
 					counter += 1;
@@ -90,7 +107,7 @@
 			$("#keyword").keyup(function () { select(); });
 			$("#limit").change(function () { select(); });
 			$("#target").change(function () { select(); });
-
+			$("#format").change(function () { select(); });
 		</script>
 	</body>
 </html>
