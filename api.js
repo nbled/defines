@@ -39,7 +39,7 @@ class API {
 
 	search_by_reference(file) {
 		let result = {};
-		for (let ket in this.constants) {
+		for (let key in this.constants) {
 			if (this.constants[key].reference.file.includes(file)) {
 				result[key] = this.constants[key];
 			}

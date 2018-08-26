@@ -13,7 +13,23 @@
 
 	<body>
 		<div id="search">
-			<p> Keyword: <input type="text" id="keyword" /> </p>
+			<label> Keyword: </label> <input type="text" id="keyword" /> 
+			<label> Target: </label>
+			<select id="target">
+				<option>Define</option>
+				<option>Source</option>
+			</select>
+			<br/>
+
+			<label> Limit: </label>
+			<select id="limit">
+				<option>25</option>
+				<option>50</option>
+				<option>75</option>
+				<option>100</option>
+				<option>125</option>
+				<option>150</option>
+			</select>
 		</div>
 		<br/>
 
@@ -49,9 +65,20 @@
 					r_cell.innerHTML = "<a href=\"https://elixir.bootlin.com/linux/v4.15/source/include/linux/" + data[key].reference.file + "#L" + data[key].reference.line + "\">" + data[key].reference.file + "</a>";
 
 					counter += 1;
-					if (counter >= 50) {
+					if (counter >= parseInt($("#limit").val())) {
 						break;
 					}
+				}
+			}
+
+			function select() {
+				let keyword = $("#keyword").val()
+				let target = $("#target").val();
+
+				if (target == "Define") {
+					refresh(api.search_by_keyword(keyword.toUpperCase()));
+				} else if (target == "Source") {
+					refresh(api.search_by_reference(keyword));
 				}
 			}
 
@@ -60,11 +87,10 @@
 
 			refresh(api.constants);
 
-			$("#keyword").keyup(function () {
-				let keyword = $("#keyword").val().toUpperCase();
-				console.log(keyword);
-				refresh(api.search_by_keyword(keyword));
-			});
+			$("#keyword").keyup(function () { select(); });
+			$("#limit").change(function () { select(); });
+			$("#target").change(function () { select(); });
+
 		</script>
 	</body>
 </html>

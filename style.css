@@ -30,3 +30,8 @@ a {
 a:visited {
     color: #8d8b8a;
 }
+
+#search {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
