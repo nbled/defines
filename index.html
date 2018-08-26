@@ -92,9 +92,9 @@
 				let keyword = $("#keyword").val()
 				let target = $("#target").val();
 
-				if (target == "Define") {
+				if (target == "In source") {
 					refresh(api.search_by_keyword(keyword.toUpperCase()));
-				} else if (target == "Source") {
+				} else if (target == "In path") {
 					refresh(api.search_by_reference(keyword));
 				}
 			}
