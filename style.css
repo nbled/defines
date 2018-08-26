@@ -1,0 +1,24 @@
+body {
+    font-family: Hack, monospace;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+td, th {
+	border: 1px solid #ddd;
+	padding: 8px;
+}
+
+th {
+	text-align: left;
+}
+
+input {
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
